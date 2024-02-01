@@ -1,0 +1,19 @@
+{
+  "name": "homeappweb",
+  "version": "1.0.0",
+  "description": "Home App Web Application",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Holderness",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  },
+  "dependencies": {
+    "core-js": "^3.35.1"
+  }
+}

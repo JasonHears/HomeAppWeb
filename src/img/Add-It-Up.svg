@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Add-It-Up</title>
+    <g id="Add-It-Up" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" x="1" y="1" width="34" height="33" rx="3"></rect>
+        <rect id="Rectangle-Copy" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" x="6" y="3" width="24" height="8" rx="3"></rect>
+        <g id="Buttons" transform="translate(10.6875, 15)" fill="#FFFFFF" stroke="#FFFFFF" stroke-linecap="square">
+            <line x1="1.3125" y1="16" x2="13.3125" y2="16" id="Line" stroke-width="4"></line>
+            <line x1="0.8125" y1="10" x2="0.8125" y2="11" id="Line-Copy-7" stroke-width="3"></line>
+            <line x1="0.8125" y1="5" x2="0.8125" y2="6" id="Line-Copy-6" stroke-width="3"></line>
+            <line x1="0.8125" y1="0" x2="0.8125" y2="1" id="Line-Copy-5" stroke-width="3"></line>
+            <line x1="7.3125" y1="10" x2="7.3125" y2="11" id="Line-Copy-10" stroke-width="3"></line>
+            <line x1="7.3125" y1="5" x2="7.3125" y2="6" id="Line-Copy-9" stroke-width="3"></line>
+            <line x1="7.3125" y1="0" x2="7.3125" y2="1" id="Line-Copy-8" stroke-width="3"></line>
+            <line x1="13.8125" y1="10" x2="13.8125" y2="11" id="Line-Copy-13" stroke-width="3"></line>
+            <line x1="13.8125" y1="5" x2="13.8125" y2="6" id="Line-Copy-12" stroke-width="3"></line>
+            <line x1="13.8125" y1="0" x2="13.8125" y2="1" id="Line-Copy-11" stroke-width="3"></line>
+        </g>
+    </g>
+</svg>

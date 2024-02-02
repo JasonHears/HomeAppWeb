@@ -1,3 +1,25 @@
+// Colors
+$color-primary: #c15305;
+$background-soft: #fffcf8;
+
+$white: #fff; // just white
+$color-light-gray-1: #f8f8f8; // background
+$color-light-gray-2: #f3f3f3; // whitest text
+$color-light-gray-3: #d0d0d0; // placeholder text
+
+$color-dark-gray-1: #333333; // page text
+$color-dark-gray-2: #606060; // soft text
+$black: #000; // just black
+$shadow: rgba(0, 0, 0, 0.08);
+
+$gradient: linear-gradient(
+  to right,
+  #e3eeff,
+  #e3eeff 3%,
+  #f3e7e9 97%,
+  #f3e7e9 99%
+);
+
 // Boilerplate CSS from: https://blog.logrocket.com/what-should-modern-css-boilerplate-look-like/
 * {
   box-sizing: border-box;
@@ -61,4 +83,86 @@ summary,
 [type="submit"],
 [type="checkbox"] {
   cursor: pointer;
+}
+
+/** Page Flex CSS **/
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  margin: 0;
+}
+.col-1 {
+  // background: #d7e8d4;
+  flex: 0.5;
+}
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+}
+.col-3 {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.content > .Content-Area {
+  flex: 1;
+  min-height: 50vh;
+}
+
+header,
+footer,
+article,
+nav {
+  padding: 1em;
+}
+
+/** Custom CSS Layout **/
+
+body.body-background {
+  height: 100%;
+
+  background: $gradient;
+
+  padding: 3rem 3rem;
+  object-fit: contain;
+}
+
+.bounding-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 90px $shadow, 0 4px 90px 0 $shadow;
+  border: solid 1px $color-light-gray-1;
+  background-color: $background-soft;
+}
+
+main {
+  margin: 3rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 50px 0 $shadow;
+  border: solid 1px $color-light-gray-2;
+  background-color: $white;
+}
+
+.Header-Title {
+  height: 3.5rem;
+  font-family: SFUIDisplay;
+  font-size: 2.8rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $color-dark-gray-1;
 }

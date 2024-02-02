@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Logo</title>
+    <g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="H-Home" fill="#C15305" x="6.7936889" y="15.8" width="32.4571161" height="25.2" rx="2.5999999"></rect>
+        <polygon id="A-Roof" fill="#C15305" transform="translate(23, 22.7789) rotate(-315) translate(-23, -22.7789)" points="7.6 7.37888886 39.2285581 6.55033079 6.77144193 39.0074469"></polygon>
+        <g id="Windows" transform="translate(17.4712, 8.7206)" fill="#FFFFFF">
+            <polygon id="Top-Window" transform="translate(5.4725, 5.4725) rotate(-315) translate(-5.4725, -5.4725)" points="1.80043877 1.80043877 9.34221403 1.60287052 1.60287052 9.34221403"></polygon>
+            <rect id="Doorway" x="1.75737915" y="17.8794037" width="7.5873778" height="14.4"></rect>
+            <rect id="Middle-Window" x="1.75737915" y="9.27940369" width="7.5873778" height="5"></rect>
+        </g>
+    </g>
+</svg>

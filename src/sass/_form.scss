@@ -1,0 +1,26 @@
+.Form-Input-Element {
+  display: inline-block;
+}
+
+.Form-Input--Label {
+  margin-left: 1rem;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $color-dark-gray-2;
+}
+
+.Form-Input {
+  border-radius: 1rem;
+  box-shadow: 0 1px 50px 0 rgba(0, 0, 0, 0.08);
+  border: solid 1px $color-light-gray-3;
+  background-color: $white;
+  padding: 0 0 0 1rem;
+}
+
+.Input--SelectField {
+  padding: 1rem;
+}

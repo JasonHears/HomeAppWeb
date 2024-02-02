@@ -1,0 +1,12 @@
+.panel-box {
+  margin: 0 0 0 1rem;
+  padding: 1.3rem;
+  border-radius: 40px;
+  border: solid 1px $color-light-gray-1;
+  background-color: $color-dark-gray-1;
+  max-width: 40rem;
+}
+
+.panel-box > h2 {
+  color: $color-light-gray-1;
+}

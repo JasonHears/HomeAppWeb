@@ -10,15 +10,60 @@
     <script type="module" src="src/js/control.js"></script>
     <title>Home App Web - Mortgage Calculator</title>
   </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <h1>Home App Web</h1>
-        <h2>Mortgage Calculator</h2>
-      </header>
-      <main>
-        <p>Put the calculator here!</p>
-      </main>
+  <body class="body-background">
+    <div class="bounding-box">
+      <nav class="col-1 nav-box">
+        <div class="nav-box__logo">
+          <img src="/src/img/Logo.svg" class="logo" />
+        </div>
+        <div class="nav-box__item selected">
+          <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+        </div>
+        <div class="nav-box__item">
+          <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+        </div>
+        <div class="nav-box__item">
+          <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+        </div>
+      </nav>
+      <div class="col-2">
+        <header><h1 class="Header-Title">Home App Web</h1></header>
+        <main class="content">
+          <div class="Content-Area">
+            <h2>Calculator Input</h2>
+            <form>
+              <span class="Form-Input-Element">
+                <span class="Form-Input--Label">Loan Amount</span>
+                <input
+                  type="text"
+                  class="Form-Input Input--TextField"
+                  value=""
+                  name="loanAmt"
+                />
+              </span>
+              <span class="Form-Input-Element">
+                <span class="Form-Input--Label">Interest Rate</span>
+                <input
+                  type="text"
+                  class="Form-Input Input--TextField"
+                  value=""
+                  name="loanIntRate"
+                />
+              </span>
+              <span class="Form-Input-Element">
+                <span class="Form-Input--Label">Loan Term</span>
+                <select class="Form-Input Input--SelectField" name="loanTerm">
+                  <option value="30">30-year Fixed</option>
+                  <option value="20">20-year Fixed</option>
+                  <option value="15">15-year Fixed</option>
+                </select>
+              </span>
+            </form>
+          </div>
+        </main>
+        <footer>© Copyright 2024 Jason Holderness</footer>
+      </div>
+      <div class="col-3 panel-box"><h2>Mortgage Calculator</h2></div>
     </div>
   </body>
 </html>

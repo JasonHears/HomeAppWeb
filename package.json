@@ -2,7 +2,6 @@
   "name": "homeappweb",
   "version": "1.0.0",
   "description": "Home App Web Application",
-  "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist",
@@ -11,9 +10,11 @@
   "author": "Jason Holderness",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.11.0",
     "parcel": "^2.11.0"
   },
   "dependencies": {
-    "core-js": "^3.35.1"
+    "core-js": "^3.35.1",
+    "regenerator-runtime": "^0.14.1"
   }
 }

@@ -13,57 +13,108 @@
   <body class="body-background">
     <div class="bounding-box">
       <nav class="col-1 nav-box">
-        <div class="nav-box__logo">
-          <img src="/src/img/Logo.svg" class="logo" />
-        </div>
-        <div class="nav-box__item selected">
-          <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-        </div>
-        <div class="nav-box__item">
-          <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-        </div>
-        <div class="nav-box__item">
-          <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+        <div class="col s12">
+          <div class="row">
+            <div class="col s12">
+              <div class="nav-box__logo">
+                <img src="/src/img/Logo.svg" class="logo" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="nav-box__item nav-box__item--selected">
+                <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="nav-box__item">
+                <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="nav-box__item">
+                <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
       <div class="col-2">
-        <header><h1 class="Header-Title">Home App Web</h1></header>
+        <header><h1 class="header-title">Home App Web</h1></header>
         <main class="content">
-          <div class="Content-Area">
+          <div class="content-area">
             <h2>Calculator Input</h2>
-            <form>
-              <span class="Form-Input-Element">
-                <span class="Form-Input--Label">Loan Amount</span>
-                <input
-                  type="text"
-                  class="Form-Input Input--TextField"
-                  value=""
-                  name="loanAmt"
-                />
-              </span>
-              <span class="Form-Input-Element">
-                <span class="Form-Input--Label">Interest Rate</span>
-                <input
-                  type="text"
-                  class="Form-Input Input--TextField"
-                  value=""
-                  name="loanIntRate"
-                />
-              </span>
-              <span class="Form-Input-Element">
-                <span class="Form-Input--Label">Loan Term</span>
-                <select class="Form-Input Input--SelectField" name="loanTerm">
-                  <option value="30">30-year Fixed</option>
-                  <option value="20">20-year Fixed</option>
-                  <option value="15">15-year Fixed</option>
-                </select>
-              </span>
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input
+                    id="loan_amount"
+                    type="text"
+                    class="validate"
+                    placeholder=" "
+                  />
+                  <label for="loan_amount">Loan Amount</label>
+                </div>
+                <div class="input-field col s6">
+                  <input
+                    id="interest_rate"
+                    type="text"
+                    class="validate"
+                    placeholder=" "
+                  />
+                  <label for="interest_rate">Interest Rate</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="loan_term">
+                    <option value="" disabled selected>
+                      Choose your desired loan term
+                    </option>
+                    <option value="30">30-year Fixed</option>
+                    <option value="20">20-year Fixed</option>
+                    <option value="15">15-year Fixed</option>
+                  </select>
+                  <label for="loan_term">Loan Term</label>
+                </div>
+              </div>
             </form>
           </div>
         </main>
         <footer>© Copyright 2024 Jason Holderness</footer>
       </div>
-      <div class="col-3 panel-box"><h2>Mortgage Calculator</h2></div>
+      <div class="col-3 panel-box">
+        <h2>Mortgage Calculator</h2>
+        <div class="calculator-display">
+          <div class="calculator-display__amount">$3,109</div>
+          <div class="calculator-display__label calculator-mode">
+            Estimated Monthly Payment
+          </div>
+        </div>
+        <hr />
+        <div class="calculator-controls">
+          <div class="row">
+            <span class="calculator-controls__label"
+              >Toggle Payment vs Purchase Amount</span
+            >
+            <span class="calculator-controls__toggle">
+              <div class="switch">
+                <label>
+                  Payment
+                  <input type="checkbox" />
+                  <span class="lever"></span>
+                  Purchase Amount
+                </label>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

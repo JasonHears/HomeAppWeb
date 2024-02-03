@@ -1,26 +1,80 @@
-.Form-Input-Element {
-  display: inline-block;
+.select-wrapper {
+  padding: 0 0.5rem;
 }
 
-.Form-Input--Label {
-  margin-left: 1rem;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: $color-dark-gray-2;
+.input-field > input[type="text"] {
+  padding: 0 1rem;
+  width: fit-content;
 }
 
-.Form-Input {
-  border-radius: 1rem;
-  box-shadow: 0 1px 50px 0 rgba(0, 0, 0, 0.08);
-  border: solid 1px $color-light-gray-3;
-  background-color: $white;
-  padding: 0 0 0 1rem;
+.input-field > input[type="text"]#interest_rate {
+  width: 7rem;
 }
+// .form-input-element {
+//   display: inline-block;
+// }
 
-.Input--SelectField {
-  padding: 1rem;
-}
+// .form-input-element__label {
+//   margin-left: 1rem;
+//   font-size: 12px;
+//   font-weight: normal;
+//   font-stretch: normal;
+//   font-style: normal;
+//   line-height: normal;
+//   letter-spacing: normal;
+//   color: $color-dark-gray-2;
+// }
+
+// .form-input-element__input--textfield {
+//   border-radius: 1rem;
+//   box-shadow: 0 1px 50px 0 rgba(0, 0, 0, 0.08);
+//   border: solid 1px $color-light-gray-3;
+//   background-color: $color-white;
+//   padding: 0.5rem 0.5rem 0.5rem 2rem;
+//   margin-bottom: 1rem;
+// }
+
+// .form-input-element__input--selectfield {
+//   border-radius: 1rem;
+//   box-shadow: 0 1px 50px 0 rgba(0, 0, 0, 0.08);
+//   border: solid 1px $color-light-gray-3;
+//   background-color: $color-white;
+//   padding: 1rem;
+//   margin-bottom: 1rem;
+// }
+
+// .form-input-element__currency {
+//   position: relative;
+//   background-color: #dedede;
+//   display: inline;
+// }
+
+// .form-input-element__currency:before {
+//   content: "$";
+//   font-size: 1.5rem;
+//   color: $color-dark-gray-2;
+//   position: absolute;
+//   top: -0.4rem;
+//   left: 1rem;
+//   z-index: 1;
+// }
+
+// .form-input-element__percent {
+//   position: relative;
+//   background-color: #dedede;
+//   display: inline;
+
+//   input {
+//     max-width: 10rem;
+//   }
+// }
+
+// .form-input-element__percent:before {
+//   content: "%";
+//   font-size: 1.5rem;
+//   color: $color-dark-gray-2;
+//   position: absolute;
+//   top: -0.4rem;
+//   right: 1rem;
+//   z-index: 1;
+// }

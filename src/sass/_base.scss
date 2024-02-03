@@ -1,15 +1,16 @@
 // Colors
-$color-primary: #c15305;
+$color-primary: #907d7d; //#c15305; // #709aa7;
+$color-logo: #c15305;
 $background-soft: #fffcf8;
 
-$white: #fff; // just white
+$color-white: #fff; // just white
 $color-light-gray-1: #f8f8f8; // background
 $color-light-gray-2: #f3f3f3; // whitest text
 $color-light-gray-3: #d0d0d0; // placeholder text
 
 $color-dark-gray-1: #333333; // page text
 $color-dark-gray-2: #606060; // soft text
-$black: #000; // just black
+$color-black: #000; // just black
 $shadow: rgba(0, 0, 0, 0.08);
 
 $gradient: linear-gradient(
@@ -111,9 +112,9 @@ body {
   display: flex;
   flex-direction: row;
 }
-.content > .Content-Area {
+.content > .content-area {
   flex: 1;
-  min-height: 50vh;
+  min-height: 20vh;
 }
 
 header,
@@ -152,11 +153,13 @@ main {
   border-radius: 12px;
   box-shadow: 0 1px 50px 0 $shadow;
   border: solid 1px $color-light-gray-2;
-  background-color: $white;
+  background-color: $color-white;
+  max-width: 60rem;
 }
 
-.Header-Title {
+.header-title {
   height: 3.5rem;
+  margin: 2rem 0;
   font-family: SFUIDisplay;
   font-size: 2.8rem;
   font-weight: normal;
@@ -164,5 +167,5 @@ main {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: $color-dark-gray-1;
+  color: $color-logo;
 }

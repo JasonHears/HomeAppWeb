@@ -49,39 +49,42 @@
         <main class="content">
           <div class="content-area">
             <h2>Calculator Input</h2>
-            <form class="col s12">
+            <form class="col s12 calculator-input">
               <div class="row">
                 <div class="input-field col s6">
                   <input
                     id="loan_amount"
-                    type="text"
-                    class="validate"
-                    placeholder=" "
+                    type="number"
+                    class="validate calculator-field"
+                    value="240000"
                   />
                   <label for="loan_amount">Loan Amount</label>
                 </div>
                 <div class="input-field col s6">
                   <input
                     id="interest_rate"
-                    type="text"
-                    class="validate"
-                    placeholder=" "
+                    type="number"
+                    class="validate calculator-field"
+                    value="7.489"
                   />
                   <label for="interest_rate">Interest Rate</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <select id="loan_term">
+                  <select id="loan_term" class="calculator-field">
                     <option value="" disabled selected>
                       Choose your desired loan term
                     </option>
-                    <option value="30">30-year Fixed</option>
-                    <option value="20">20-year Fixed</option>
-                    <option value="15">15-year Fixed</option>
+                    <option value="30,fixed">30-year Fixed</option>
+                    <option value="20,fixed">20-year Fixed</option>
+                    <option value="15,fixed">15-year Fixed</option>
                   </select>
                   <label for="loan_term">Loan Term</label>
                 </div>
+              </div>
+              <div class="row">
+                <button type="submit" name="Update">Up</button>
               </div>
             </form>
           </div>

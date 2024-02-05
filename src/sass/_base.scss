@@ -112,7 +112,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-.content > .content-area {
+.content > .calculator-monthly {
   flex: 1;
   min-height: 20vh;
 }
@@ -168,4 +168,8 @@ main {
   line-height: normal;
   letter-spacing: normal;
   color: $color-logo;
+}
+
+.hidden {
+  display: none;
 }

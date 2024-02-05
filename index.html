@@ -47,32 +47,34 @@
       <div class="col-2">
         <header><h1 class="header-title">Home App Web</h1></header>
         <main class="content">
-          <div class="content-area">
-            <h2>Calculator Input</h2>
+          <!-- Monthly Calculator-->
+          <div class="calculator-input calculator-monthly">
+            <h2>Monthly Calculator Input</h2>
             <form class="col s12 calculator-input">
               <div class="row">
                 <div class="input-field col s6">
                   <input
-                    id="loan_amount"
+                    id="mnth_loan_amount"
                     type="number"
                     class="validate calculator-field"
                     value="240000"
                   />
-                  <label for="loan_amount">Loan Amount</label>
+                  <label for="mnth_loan_amount">Loan Amount</label>
                 </div>
                 <div class="input-field col s6">
                   <input
-                    id="interest_rate"
+                    id="mnth_interest_rate"
                     type="number"
                     class="validate calculator-field"
                     value="7.489"
+                    step="0.01"
                   />
-                  <label for="interest_rate">Interest Rate</label>
+                  <label for="mnth_interest_rate">Interest Rate</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <select id="loan_term" class="calculator-field">
+                  <select id="mnth_loan_term" class="calculator-field">
                     <option value="" disabled selected>
                       Choose your desired loan term
                     </option>
@@ -80,11 +82,48 @@
                     <option value="20,fixed">20-year Fixed</option>
                     <option value="15,fixed">15-year Fixed</option>
                   </select>
-                  <label for="loan_term">Loan Term</label>
+                  <label for="mnth_loan_term">Loan Term</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Amount Calculator -->
+          <div class="calculator-input calculator-amount hidden">
+            <h2>Amount Calculator Input</h2>
+            <form class="col s12 calculator-input">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input
+                    id="amt_payment"
+                    type="number"
+                    class="validate calculator-field"
+                    value="1650"
+                  />
+                  <label for="amt_payment">Monthly Payment</label>
+                </div>
+                <div class="input-field col s6">
+                  <input
+                    id="amt_interest_rate"
+                    type="number"
+                    class="validate calculator-field"
+                    value="7.489"
+                    step="0.01"
+                  />
+                  <label for="amt_interest_rate">Interest Rate</label>
                 </div>
               </div>
               <div class="row">
-                <button type="submit" name="Update">Up</button>
+                <div class="input-field col s12">
+                  <select id="amt_loan_term" class="calculator-field">
+                    <option value="" disabled selected>
+                      Choose your desired loan term
+                    </option>
+                    <option value="30,fixed">30-year Fixed</option>
+                    <option value="20,fixed">20-year Fixed</option>
+                    <option value="15,fixed">15-year Fixed</option>
+                  </select>
+                  <label for="amt_loan_term">Loan Term</label>
+                </div>
               </div>
             </form>
           </div>
@@ -94,9 +133,9 @@
       <div class="col-3 panel-box">
         <h2>Mortgage Calculator</h2>
         <div class="calculator-display">
-          <div class="calculator-display__amount">$3,109</div>
+          <div class="calculator-display__amount"></div>
           <div class="calculator-display__label calculator-mode">
-            Estimated Monthly Payment
+            Enter your loan information.
           </div>
         </div>
         <hr />
@@ -106,12 +145,25 @@
               >Toggle Payment vs Purchase Amount</span
             >
             <span class="calculator-controls__toggle">
-              <div class="switch">
+              <div class="switch calculation-type">
                 <label>
                   Payment
                   <input type="checkbox" />
                   <span class="lever"></span>
                   Purchase Amount
+                </label>
+              </div>
+            </span>
+          </div>
+          <div class="row">
+            <span class="calculator-controls__label">Some Other Control</span>
+            <span class="calculator-controls__toggle">
+              <div class="switch other-type">
+                <label>
+                  Yes
+                  <input type="checkbox" />
+                  <span class="lever"></span>
+                  No
                 </label>
               </div>
             </span>

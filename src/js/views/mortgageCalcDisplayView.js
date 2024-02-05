@@ -1,1 +1,35 @@
-class mortgageCalcDisplayView {}
+import View from "./View.js";
+import * as helper from "../helper.js";
+import { CALC_TYPE_MONTHLY, CALC_TYPE_AMOUNT } from "../config.js";
+
+class mortgageCalcDisplayView extends View {
+  _parentElement = document.querySelector(".calculator-display");
+  _message = "Enter your loan information.";
+  _error = "Invalid loan information.";
+
+  _generateMarkup() {
+    let display, label;
+    if (this._data.controls.calculationType == CALC_TYPE_MONTHLY) {
+      display = this._data.results.monthly;
+      label = "Estimated Monthly Payment";
+    }
+
+    if (this._data.controls.calculationType == CALC_TYPE_AMOUNT) {
+      display = this._data.results.amount;
+      label = "Estimated Loan Amount";
+    }
+
+    return `
+    <div class="calculator-display__amount">${helper.formatCurrency(
+      display,
+      "en-US",
+      "USD"
+    )}</div>
+    <div class="calculator-display__label calculator-mode">
+      ${label}
+    </div>
+    `;
+  }
+} // class
+
+export default new mortgageCalcDisplayView();

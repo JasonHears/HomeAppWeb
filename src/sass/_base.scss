@@ -4,13 +4,14 @@ $color-logo: #c15305;
 $background-soft: #fffcf8;
 
 $color-white: #fff; // just white
-$color-light-gray-1: #f8f8f8; // background
-$color-light-gray-2: #f3f3f3; // whitest text
-$color-light-gray-3: #d0d0d0; // placeholder text
+$color-light-gray-1: #e0e0e0; // background white
+$color-light-gray-2: #c0c0c0; // whitest text
+$color-light-gray-3: #a0a0a0; // placeholder text
 
-$color-dark-gray-1: #333333; // page text
-$color-dark-gray-2: #606060; // soft text
 $color-black: #000; // just black
+$color-dark-gray-1: #333333; // page text
+$color-dark-gray-2: #505050; // soft text
+$color-dark-gray-3: #707070; // soft text
 $shadow: rgba(0, 0, 0, 0.08);
 
 $gradient: linear-gradient(
@@ -126,6 +127,10 @@ nav {
 
 /** Custom CSS Layout **/
 
+.hidden {
+  display: none !important;
+}
+
 body.body-background {
   height: 100%;
 
@@ -135,20 +140,50 @@ body.body-background {
   object-fit: contain;
 }
 
-.bounding-box {
-  width: 100%;
-  height: 100%;
-  border-radius: 40px;
+.body-background > .container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 1rem;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
   box-shadow: 0 4px 90px $shadow, 0 4px 90px 0 $shadow;
   border: solid 1px $color-light-gray-1;
   background-color: $background-soft;
+  padding: 0;
+
+  .row {
+    width: 100%;
+    --bs-gutter-x: 0;
+  }
+}
+
+.row > .col-nav {
+  order: 1;
+  flex-grow: 0;
+  flex-basis: 0;
+  padding-left: 0;
+}
+
+.col-input {
+  order: 2;
+  flex-grow: 4;
+  flex-basis: auto;
+}
+
+.row > .col-display {
+  order: 3;
+  flex-grow: 2;
+  flex-basis: auto;
+  padding-right: 0;
 }
 
 main {
-  margin: 3rem;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 1px 50px 0 $shadow;
@@ -157,19 +192,31 @@ main {
   max-width: 60rem;
 }
 
-.header-title {
+header {
   height: 3.5rem;
-  margin: 2rem 0;
+  margin: 2rem;
+  h1 {
+    font-family: SFUIDisplay;
+    font-size: 2.8rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $color-logo;
+  }
+}
+
+footer {
+  height: 3.5rem;
+  margin: 2rem;
+
   font-family: SFUIDisplay;
-  font-size: 2.8rem;
+
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
   color: $color-logo;
-}
-
-.hidden {
-  display: none;
 }

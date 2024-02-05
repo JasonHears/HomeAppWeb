@@ -14,11 +14,13 @@ class mortgageCalcControlsView extends View {
 
   addHandlerCalculationTypeSwitch(handler) {
     // handle calculation-type switch
-    document
-      .querySelector(".switch.calculation-type")
-      .addEventListener("change", function (e) {
+    console.log("addHandlerCalcType()");
+    console.log(document.querySelectorAll("input[type='radio']"));
+    document.querySelectorAll("input[type='radio']").forEach((elm) => {
+      elm.addEventListener("change", function (e) {
         handler(TOGGLE_CALC_TYPE);
       });
+    });
   }
 } // class
 

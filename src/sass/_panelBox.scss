@@ -1,10 +1,18 @@
 .panel-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin: 0 0 0 1rem;
   padding: 1.3rem;
   border-radius: 40px;
   border: solid 1px $color-light-gray-1;
   background-color: $color-dark-gray-1;
   max-width: 40rem;
+
+  hr {
+    width: 100%;
+    border-color: $color-light-gray-1;
+  }
 }
 
 .panel-box > h2 {
@@ -16,7 +24,7 @@
 
 .calculator-display {
   height: 6rem;
-  width: 90%;
+  width: 100%;
   margin: 0 0.5rem;
   padding: 0.5rem 1.5rem;
   border-radius: 12px;
@@ -47,8 +55,33 @@
   color: $color-dark-gray-1;
 }
 
+.calculator-controls {
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+}
+
 .calculator-controls__label {
   color: $color-light-gray-3;
   display: block;
-  margin: 0.4rem 0;
+  margin: 0.5rem 0;
+}
+
+.calculator-controls > .btn-check:checked + .btn {
+  color: $color-white;
+}
+
+.calculator-controls > .calculator-controls__btn {
+  color: gray;
+  border-color: gray;
+}
+
+.calculator-controls > .btn-check:hover + .btn {
+  color: $color-light-gray-1;
+  border-color: $color-light-gray-1;
+}
+
+.form-switch > label {
+  color: $color-light-gray-3;
+  font-size: 0.7rem;
+  vertical-align: middle;
 }

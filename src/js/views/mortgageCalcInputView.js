@@ -2,8 +2,6 @@ import View from "./View.js";
 
 import { CALC_TYPE_MONTHLY, CALC_TYPE_AMOUNT } from "../config.js";
 
-import * as M from "../../lib/materialize-src/js/bin/materialize";
-
 class MortgageCalcInputView extends View {
   _parentElement = document.querySelector(".calculator-monthly");
   _message = "Enter your loan information.";
@@ -26,8 +24,6 @@ class MortgageCalcInputView extends View {
   }
 
   addHandlerCalculatorUpdate = function (handler) {
-    this._materializeSelectFields();
-
     this._mnthLoanAmtInput.addEventListener("keyup", handler);
     this._mnthLoanIntRateInput.addEventListener("keyup", handler);
     this._mnthLoanTermInput.addEventListener("change", handler);
@@ -36,11 +32,6 @@ class MortgageCalcInputView extends View {
     this._amtLoanIntRateInput.addEventListener("keyup", handler);
     this._amtLoanTermInput.addEventListener("change", handler);
   };
-
-  _materializeSelectFields() {
-    let elems = document.querySelectorAll("select");
-    let instances = M.FormSelect.init(elems, { class: "calulator-select" });
-  }
 
   _generateMarkup() {
     return "";

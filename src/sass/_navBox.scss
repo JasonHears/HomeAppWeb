@@ -2,18 +2,20 @@ nav.nav-box {
   margin: 0 4rem 0 0;
   padding: 1rem;
   width: 10rem;
+  height: 100%;
   max-width: 10rem;
   height: auto;
   border-radius: 1.2rem;
   box-shadow: 0 1px 50px 0 $shadow;
   border: solid 1px $color-light-gray-1;
   background-color: $color-white;
+
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   flex-direction: column;
 
-  div.col.s12 {
+  div.col {
     display: grid;
     justify-content: center;
   }
@@ -32,7 +34,7 @@ nav.nav-box {
   padding: 0 0.7rem;
   border-radius: 0.7rem;
   background-color: $color-white;
-  margin: 0;
+  margin: 1rem 0;
   width: 4rem;
   height: 4rem;
 

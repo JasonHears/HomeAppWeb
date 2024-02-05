@@ -11,163 +11,197 @@
     <title>Home App Web - Mortgage Calculator</title>
   </head>
   <body class="body-background">
-    <div class="bounding-box">
-      <nav class="col-1 nav-box">
-        <div class="col s12">
-          <div class="row">
-            <div class="col s12">
-              <div class="nav-box__logo">
-                <img src="/src/img/Logo.svg" class="logo" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="nav-box__item nav-box__item--selected">
-                <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="nav-box__item">
-                <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="nav-box__item">
-                <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-              </div>
-            </div>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <header><h1>Home App Web</h1></header>
         </div>
-      </nav>
-      <div class="col-2">
-        <header><h1 class="header-title">Home App Web</h1></header>
-        <main class="content">
-          <!-- Monthly Calculator-->
-          <div class="calculator-input calculator-monthly">
-            <h2>Monthly Calculator Input</h2>
-            <form class="col s12 calculator-input">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input
-                    id="mnth_loan_amount"
-                    type="number"
-                    class="validate calculator-field"
-                    value="240000"
-                  />
-                  <label for="mnth_loan_amount">Loan Amount</label>
-                </div>
-                <div class="input-field col s6">
-                  <input
-                    id="mnth_interest_rate"
-                    type="number"
-                    class="validate calculator-field"
-                    value="7.489"
-                    step="0.01"
-                  />
-                  <label for="mnth_interest_rate">Interest Rate</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <select id="mnth_loan_term" class="calculator-field">
-                    <option value="" disabled selected>
-                      Choose your desired loan term
-                    </option>
-                    <option value="30,fixed">30-year Fixed</option>
-                    <option value="20,fixed">20-year Fixed</option>
-                    <option value="15,fixed">15-year Fixed</option>
-                  </select>
-                  <label for="mnth_loan_term">Loan Term</label>
-                </div>
-              </div>
-            </form>
-          </div>
-          <!-- Amount Calculator -->
-          <div class="calculator-input calculator-amount hidden">
-            <h2>Amount Calculator Input</h2>
-            <form class="col s12 calculator-input">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input
-                    id="amt_payment"
-                    type="number"
-                    class="validate calculator-field"
-                    value="1650"
-                  />
-                  <label for="amt_payment">Monthly Payment</label>
-                </div>
-                <div class="input-field col s6">
-                  <input
-                    id="amt_interest_rate"
-                    type="number"
-                    class="validate calculator-field"
-                    value="7.489"
-                    step="0.01"
-                  />
-                  <label for="amt_interest_rate">Interest Rate</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <select id="amt_loan_term" class="calculator-field">
-                    <option value="" disabled selected>
-                      Choose your desired loan term
-                    </option>
-                    <option value="30,fixed">30-year Fixed</option>
-                    <option value="20,fixed">20-year Fixed</option>
-                    <option value="15,fixed">15-year Fixed</option>
-                  </select>
-                  <label for="amt_loan_term">Loan Term</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </main>
-        <footer>© Copyright 2024 Jason Holderness</footer>
       </div>
-      <div class="col-3 panel-box">
-        <h2>Mortgage Calculator</h2>
-        <div class="calculator-display">
-          <div class="calculator-display__amount"></div>
-          <div class="calculator-display__label calculator-mode">
-            Enter your loan information.
+      <div class="row">
+        <div class="col-2 col-nav">
+          <nav class="nav-box">
+            <div class="row">
+              <div class="col">
+                <div class="nav-box__logo">
+                  <img src="/src/img/Logo.svg" class="logo" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="nav-box__item nav-box__item--selected">
+                  <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="nav-box__item">
+                  <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="nav-box__item">
+                  <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="col-7 col-input">
+          <main class="content">
+            <!-- Monthly Calculator-->
+            <div class="calculator-input calculator-monthly">
+              <h2>Monthly Calculator Input</h2>
+              <form class="calculator-input">
+                <div class="row">
+                  <div class="col input-field">
+                    <input
+                      id="mnth_loan_amount"
+                      type="number"
+                      class="form-control calculator-field"
+                      value=""
+                    />
+                    <label for="mnth_loan_amount">Loan Amount</label>
+                  </div>
+                  <div class="col input-field">
+                    <input
+                      id="mnth_interest_rate"
+                      type="number"
+                      class="form-control calculator-field interest_rate"
+                      value=""
+                      step="0.01"
+                    />
+                    <label for="mnth_interest_rate">Interest Rate</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col input-field">
+                    <select
+                      id="mnth_loan_term"
+                      class="calculator-field form-select form-select-lg"
+                    >
+                      <option value="" disabled selected>
+                        Choose your desired loan term
+                      </option>
+                      <option value="30,fixed">30-year Fixed</option>
+                      <option value="20,fixed">20-year Fixed</option>
+                      <option value="15,fixed">15-year Fixed</option>
+                    </select>
+                    <label for="mnth_loan_term">Loan Term</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- Amount Calculator -->
+            <div class="calculator-input calculator-amount hidden">
+              <h2>Amount Calculator Input</h2>
+              <form class="calculator-input">
+                <div class="row">
+                  <div class="col input-field">
+                    <input
+                      id="amt_payment"
+                      type="number"
+                      class="form-control calculator-field"
+                      value=""
+                    />
+                    <label for="amt_payment">Monthly Payment</label>
+                  </div>
+                  <div class="col input-field">
+                    <input
+                      id="amt_interest_rate"
+                      type="number"
+                      class="form-control calculator-field interest_rate"
+                      value=""
+                      step="0.01"
+                    />
+                    <label for="amt_interest_rate">Interest Rate</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col input-field">
+                    <select
+                      id="amt_loan_term"
+                      class="calculator-field form-select form-select-lg"
+                    >
+                      <option value="" disabled selected>
+                        Choose your desired loan term
+                      </option>
+                      <option value="30,fixed">30-year Fixed</option>
+                      <option value="20,fixed">20-year Fixed</option>
+                      <option value="15,fixed">15-year Fixed</option>
+                    </select>
+                    <label for="amt_loan_term">Loan Term</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </main>
+        </div>
+        <div class="col-3 col-display">
+          <div class="panel-box">
+            <h2>Mortgage Calculator</h2>
+            <div class="calculator-display">
+              <div class="calculator-display__amount"></div>
+              <div class="calculator-display__label calculator-mode">
+                Enter your loan information.
+              </div>
+            </div>
+            <hr />
+            <div class="calculator-controls">
+              <div class="calculator-controls__label">
+                Toggle Payment vs Purchase Amount
+              </div>
+
+              <input
+                type="radio"
+                class="btn-check calculation-type__switch"
+                name="calculation-type"
+                id="calc-type-monthly"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn calculator-controls__btn"
+                for="calc-type-monthly"
+                >Monthly Payment</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check calculation-type__switch"
+                name="calculation-type"
+                id="calc-type-amount"
+                autocomplete="off"
+              />
+              <label class="btn calculator-controls__btn" for="calc-type-amount"
+                >Loan Amount</label
+              >
+              <!-- <div
+                class="form-check form-switch calculator-controls__toggle calculation-type"
+              >
+                <label class="form-check-label" for="switchCalculatorType"
+                  >Payment</label
+                >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="switchCalculatorType"
+                />
+                <label class="form-check-label" for="switchCalculatorType"
+                  >Purchase Amount</label
+                >
+              </div> -->
+            </div>
           </div>
         </div>
-        <hr />
-        <div class="calculator-controls">
-          <div class="row">
-            <span class="calculator-controls__label"
-              >Toggle Payment vs Purchase Amount</span
-            >
-            <span class="calculator-controls__toggle">
-              <div class="switch calculation-type">
-                <label>
-                  Payment
-                  <input type="checkbox" />
-                  <span class="lever"></span>
-                  Purchase Amount
-                </label>
-              </div>
-            </span>
-          </div>
-          <div class="row">
-            <span class="calculator-controls__label">Some Other Control</span>
-            <span class="calculator-controls__toggle">
-              <div class="switch other-type">
-                <label>
-                  Yes
-                  <input type="checkbox" />
-                  <span class="lever"></span>
-                  No
-                </label>
-              </div>
-            </span>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <footer>© Copyright 2024 Jason Holderness</footer>
         </div>
       </div>
     </div>

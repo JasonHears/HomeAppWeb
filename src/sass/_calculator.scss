@@ -2,3 +2,21 @@
   font-size: large;
   color: $color-dark-gray-2;
 }
+
+.calculator-input {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-field {
+  margin-right: 1rem;
+}
+
+input[type="number"].calculator-field {
+  padding: 0 1rem;
+}
+
+input[type="number"].interest_rate {
+  width: 7rem;
+}

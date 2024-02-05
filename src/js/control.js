@@ -2,10 +2,10 @@ import * as model from "./model.js";
 import mortgageCalcInputView from "./views/mortgageCalcInputView.js";
 import mortgageCalcDisplayView from "./views/mortgageCalcDisplayView.js";
 import mortgageCalcControlsView from "./views/mortgageCalcControlsView.js";
-
 import * as config from "./config.js";
 
-import * as M from "../lib/materialize-src/js/bin/materialize";
+// Import all of Bootstrap's JS
+import * as bootstrap from "bootstrap";
 
 import "core-js/stable"; // transpiling backwards support
 import "regenerator-runtime/runtime"; // polyfill async await

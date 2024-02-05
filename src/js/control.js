@@ -10,6 +10,19 @@ import * as bootstrap from "bootstrap";
 import "core-js/stable"; // transpiling backwards support
 import "regenerator-runtime/runtime"; // polyfill async await
 
+_validateInput = function (inputObj) {
+  return (
+    // validate interest and term are not blank
+    inputObj.interest_rate !== "" &&
+    inputObj.loan_term !== "" &&
+    // validate loan amount or payment is not blank based on calculation type
+    ((model.state.controls.calculationType === config.CALC_TYPE_MONTHLY &&
+      inputObj.mnth_loan_amount !== "") ||
+      (model.state.controls.calculationType === config.CALC_TYPE_AMOUNT &&
+        inputObj.amt_payment !== ""))
+  );
+};
+
 controlLoanCalculation = async function (calcInput) {
   // process input values
   const objData = {};
@@ -26,7 +39,7 @@ controlLoanCalculation = async function (calcInput) {
     });
 
   // guard if any values are blank
-  if (Object.values(objData).includes("")) return;
+  if (!_validateInput(objData)) return;
 
   // run calculator
   await model.calculateMortgage(objData);

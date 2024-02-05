@@ -14,8 +14,7 @@ class mortgageCalcControlsView extends View {
 
   addHandlerCalculationTypeSwitch(handler) {
     // handle calculation-type switch
-    console.log("addHandlerCalcType()");
-    console.log(document.querySelectorAll("input[type='radio']"));
+    // passing in TOGGLE_CALC_TYPE to support additional toggles in the future
     document.querySelectorAll("input[type='radio']").forEach((elm) => {
       elm.addEventListener("change", function (e) {
         handler(TOGGLE_CALC_TYPE);

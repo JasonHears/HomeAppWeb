@@ -30,21 +30,11 @@
             <div class="row">
               <div class="col">
                 <div class="nav-box__item nav-box__item--selected">
-                  <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="nav-box__item">
-                  <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="nav-box__item">
-                  <img src="/src/img/Add-It-Up.svg" class="nav-box__icon" />
+                  <svg class="bi" fill="white">
+                    <use
+                      xlink:href="node_modules/bootstrap-icons/bootstrap-icons.svg#calculator"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -52,78 +42,51 @@
         </div>
         <div class="col-7 col-input">
           <main class="content">
-            <!-- Monthly Calculator-->
-            <div class="calculator-input calculator-monthly">
-              <h2>Monthly Calculator Input</h2>
-              <form class="calculator-input">
+            <!-- Unified Calculator-->
+            <div class="calculator-input">
+              <h2>Calculator Input</h2>
+              <form>
                 <div class="row">
-                  <div class="col input-field">
+                  <div
+                    class="col input-group-lg input-field calculator-monthly"
+                  >
+                    <label for="mnth_loan_amount">Loan Amount</label>
                     <input
                       id="mnth_loan_amount"
                       type="number"
                       class="form-control calculator-field"
                       value=""
                     />
-                    <label for="mnth_loan_amount">Loan Amount</label>
                   </div>
-                  <div class="col input-field">
-                    <input
-                      id="mnth_interest_rate"
-                      type="number"
-                      class="form-control calculator-field interest_rate"
-                      value=""
-                      step="0.01"
-                    />
-                    <label for="mnth_interest_rate">Interest Rate</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col input-field">
-                    <select
-                      id="mnth_loan_term"
-                      class="calculator-field form-select form-select-lg"
-                    >
-                      <option value="" disabled selected>
-                        Choose your desired loan term
-                      </option>
-                      <option value="30,fixed">30-year Fixed</option>
-                      <option value="20,fixed">20-year Fixed</option>
-                      <option value="15,fixed">15-year Fixed</option>
-                    </select>
-                    <label for="mnth_loan_term">Loan Term</label>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- Amount Calculator -->
-            <div class="calculator-input calculator-amount hidden">
-              <h2>Amount Calculator Input</h2>
-              <form class="calculator-input">
-                <div class="row">
-                  <div class="col input-field">
+                  <div
+                    class="col input-group-lg input-field calculator-amount hidden"
+                  >
+                    <label for="mnth_loan_amount">Monthly Payment</label>
                     <input
                       id="amt_payment"
                       type="number"
                       class="form-control calculator-field"
                       value=""
                     />
-                    <label for="amt_payment">Monthly Payment</label>
                   </div>
-                  <div class="col input-field">
+                </div>
+                <div class="row">
+                  <div class="col input-group-lg input-field">
+                    <label for="interest_rate">Interest Rate</label>
                     <input
-                      id="amt_interest_rate"
+                      id="interest_rate"
                       type="number"
                       class="form-control calculator-field interest_rate"
                       value=""
                       step="0.01"
                     />
-                    <label for="amt_interest_rate">Interest Rate</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col input-field">
+                    <label for="loan_term">Loan Term</label>
                     <select
-                      id="amt_loan_term"
+                      id="loan_term"
                       class="calculator-field form-select form-select-lg"
                     >
                       <option value="" disabled selected>
@@ -133,7 +96,6 @@
                       <option value="20,fixed">20-year Fixed</option>
                       <option value="15,fixed">15-year Fixed</option>
                     </select>
-                    <label for="amt_loan_term">Loan Term</label>
                   </div>
                 </div>
               </form>

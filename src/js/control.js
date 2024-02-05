@@ -16,9 +16,11 @@ _validateInput = function (inputObj) {
     inputObj.interest_rate !== "" &&
     inputObj.loan_term !== "" &&
     // validate loan amount or payment is not blank based on calculation type
-    ((model.state.controls.calculationType === config.CALC_TYPE_MONTHLY &&
+    ((model.state.controls[config.TOGGLE_CALC_TYPE] ===
+      config.CALC_TYPE_MONTHLY &&
       inputObj.mnth_loan_amount !== "") ||
-      (model.state.controls.calculationType === config.CALC_TYPE_AMOUNT &&
+      (model.state.controls[config.TOGGLE_CALC_TYPE] ===
+        config.CALC_TYPE_AMOUNT &&
         inputObj.amt_payment !== ""))
   );
 };
@@ -48,18 +50,13 @@ controlLoanCalculation = async function (calcInput) {
   await mortgageCalcDisplayView.render(model.state);
 };
 
-controlCalculatorToggle = async function (toggle) {
-  if ((toggle = config.TOGGLE_CALC_TYPE)) {
-    // toggle the calculation Type
-    model.state.controls.calculationType =
-      model.state.controls.calculationType === config.CALC_TYPE_MONTHLY
-        ? config.CALC_TYPE_AMOUNT
-        : config.CALC_TYPE_MONTHLY;
+controlToggles = async function (e) {
+  const toggle = e.target.name;
+  model.state.controls[toggle] = !model.state.controls[toggle];
 
+  if (toggle === config.TOGGLE_CALC_TYPE) {
     // toggle calculator input view
     mortgageCalcInputView.toggleCalculator();
-
-    // trigger calculation?
 
     // update display
     mortgageCalcDisplayView.render(model.state);
@@ -67,12 +64,15 @@ controlCalculatorToggle = async function (toggle) {
 };
 
 const init = function () {
-  mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);
-  mortgageCalcControlsView.addHandlerCalculationTypeSwitch(
-    controlCalculatorToggle
-  );
-
+  // set up state object data
+  model.state.controls[config.TOGGLE_CALC_TYPE] = false;
+  model.state.controls[config.TOGGLE_PROPERTY_TAX] = false;
   model.state.user.locale = navigator.language;
+
+  mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);
+
+  mortgageCalcControlsView.render([1, 2]);
+  mortgageCalcControlsView.addHandlerCalculationTypeSwitch(controlToggles);
 };
 
 init();

@@ -47,39 +47,46 @@
               <h2>Calculator Input</h2>
               <form>
                 <div class="row">
-                  <div
-                    class="col input-group-lg input-field calculator-monthly"
-                  >
+                  <div class="col input-field calculator-monthly">
                     <label for="mnth_loan_amount">Loan Amount</label>
-                    <input
-                      id="mnth_loan_amount"
-                      type="number"
-                      class="form-control calculator-field"
-                      value=""
-                    />
+                    <div class="input-group mb-3 input-group-lg">
+                      <span class="input-group-text">$</span>
+                      <input
+                        id="mnth_loan_amount"
+                        type="number"
+                        class="form-control calculator-field"
+                        aria-label="Amount (to the nearest dollar)"
+                      />
+                      <span class="input-group-text">.00</span>
+                    </div>
                   </div>
-                  <div
-                    class="col input-group-lg input-field calculator-amount hidden"
-                  >
+                  <div class="col input-field calculator-amount hidden">
                     <label for="mnth_loan_amount">Monthly Payment</label>
-                    <input
-                      id="amt_payment"
-                      type="number"
-                      class="form-control calculator-field"
-                      value=""
-                    />
+                    <div class="input-group mb-3 input-group-lg">
+                      <span class="input-group-text">$</span>
+                      <input
+                        id="amt_payment"
+                        type="number"
+                        class="form-control calculator-field"
+                        aria-label="Int Rate"
+                      />
+                      <span class="input-group-text">.00</span>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col input-group-lg input-field">
                     <label for="interest_rate">Interest Rate</label>
-                    <input
-                      id="interest_rate"
-                      type="number"
-                      class="form-control calculator-field interest_rate"
-                      value=""
-                      step="0.01"
-                    />
+                    <div class="input-group mb-3 input-group-lg">
+                      <input
+                        id="interest_rate"
+                        type="number"
+                        class="form-control calculator-field interest_rate"
+                        aria-label="Int Rate"
+                        step="0.01"
+                      />
+                      <span class="input-group-text">%</span>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -98,6 +105,9 @@
                     </select>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col"></div>
+                </div>
               </form>
             </div>
           </main>
@@ -112,52 +122,7 @@
               </div>
             </div>
             <hr />
-            <div class="calculator-controls">
-              <div class="calculator-controls__label">
-                Toggle Payment vs Purchase Amount
-              </div>
-
-              <input
-                type="radio"
-                class="btn-check calculation-type__switch"
-                name="calculation-type"
-                id="calc-type-monthly"
-                autocomplete="off"
-                checked
-              />
-              <label
-                class="btn calculator-controls__btn"
-                for="calc-type-monthly"
-                >Monthly Payment</label
-              >
-
-              <input
-                type="radio"
-                class="btn-check calculation-type__switch"
-                name="calculation-type"
-                id="calc-type-amount"
-                autocomplete="off"
-              />
-              <label class="btn calculator-controls__btn" for="calc-type-amount"
-                >Loan Amount</label
-              >
-              <!-- <div
-                class="form-check form-switch calculator-controls__toggle calculation-type"
-              >
-                <label class="form-check-label" for="switchCalculatorType"
-                  >Payment</label
-                >
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  role="switch"
-                  id="switchCalculatorType"
-                />
-                <label class="form-check-label" for="switchCalculatorType"
-                  >Purchase Amount</label
-                >
-              </div> -->
-            </div>
+            <div class="calculator-controls">render controls</div>
           </div>
         </div>
       </div>

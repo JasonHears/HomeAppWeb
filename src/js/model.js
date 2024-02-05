@@ -8,9 +8,7 @@ export const state = {
     termYears: 30,
     termType: "fixed",
   },
-  controls: {
-    calculationType: DEFAULT_CALC_TYPE,
-  },
+  controls: {},
   results: {
     monthly: 0,
     amount: 0,
@@ -34,7 +32,7 @@ const _calculateMonthly = function () {
     (interest * (1 + interest) ** numPayments);
 
   const result = Math.round((loanAmt / discountFactor) * 100) / 100;
-
+  console.log("result: ", result);
   return result;
 };
 
@@ -51,11 +49,12 @@ const _calculateAmount = function () {
     (interest * (1 + interest) ** numPayments);
 
   const result = Math.round(payment * discountFactor * 100) / 100;
-
+  console.log("result: ", result);
   return result;
 };
 
 const createCalculator = function (data) {
+  console.log("createCalculator()", data);
   return {
     mnthLoanAmount: +data.mnth_loan_amount,
     amtPayment: +data.amt_payment,

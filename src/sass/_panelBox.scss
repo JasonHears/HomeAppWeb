@@ -64,17 +64,19 @@
   display: block;
   margin: 0.5rem 0;
 }
+.calculator-controls__row {
+}
 
-.calculator-controls > .btn-check:checked + .btn {
+.calculator-controls__row > .btn-check:checked + .btn {
   color: $color-white;
 }
 
-.calculator-controls > .calculator-controls__btn {
+.calculator-controls__row > .calculator-controls__btn {
   color: gray;
   border-color: gray;
 }
 
-.calculator-controls > .btn-check:hover + .btn {
+.calculator-controls__row > .btn-check:hover + .btn {
   color: $color-light-gray-1;
   border-color: $color-light-gray-1;
 }

@@ -11,3 +11,7 @@ export const formatCurrency = function (amount, locale, currency) {
     currency: currency,
   }).format(amount);
 };
+
+export const roundMoney = function (amount) {
+  return Math.round(amount * 100) / 100;
+};

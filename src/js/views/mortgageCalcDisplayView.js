@@ -18,31 +18,28 @@ class mortgageCalcDisplayView extends View {
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
+  _getDisplay(toggleControl) {
+    return toggleControl === config.CALC_TYPE_MONTHLY
+      ? this._data.results.monthly
+      : this._data.results.amount;
+  }
+
+  _getLabel(toggleControl) {
+    return toggleControl === config.CALC_TYPE_MONTHLY
+      ? "Estimated Monthly Payment"
+      : "Estimated Loan Amount";
+  }
+
   _generateMarkup() {
-    let display, label;
-    if (
-      this._data.controls[config.TOGGLE_CALC_TYPE] == config.CALC_TYPE_MONTHLY
-    ) {
-      display = this._data.results.monthly;
-      label = "Estimated Monthly Payment";
-    }
-
-    if (
-      this._data.controls[config.TOGGLE_CALC_TYPE] == config.CALC_TYPE_AMOUNT
-    ) {
-      display = this._data.results.amount;
-      label = "Estimated Loan Amount";
-    }
-
     return `
-    <div class="calculator-display__amount">${helper.formatCurrency(
-      display,
-      "en-US",
-      "USD"
-    )}</div>
-    <div class="calculator-display__label calculator-mode">
-      ${label}
-    </div>
+      <div class="calculator-display__amount">${helper.formatCurrency(
+        this._getDisplay(this._data.controls[config.TOGGLE_CALC_TYPE]),
+        "en-US",
+        "USD"
+      )}</div>
+      <div class="calculator-display__label calculator-mode">
+        ${this._getLabel(this._data.controls[config.TOGGLE_CALC_TYPE])}
+      </div>
     `;
   }
 } // class

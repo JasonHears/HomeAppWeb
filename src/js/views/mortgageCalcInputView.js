@@ -1,7 +1,5 @@
 import View from "./View.js";
 
-import { CALC_TYPE_MONTHLY, CALC_TYPE_AMOUNT } from "../config.js";
-
 // import icons from "url:bootstrap-icons/bootstrap-icons.svg"; // FOR USE OF BOOTSTRAP ICONS
 
 class MortgageCalcInputView extends View {
@@ -20,6 +18,7 @@ class MortgageCalcInputView extends View {
 
   _propertyTaxInput = document.querySelector(".calculator-property-tax");
   _insuranceInput = document.querySelector(".calculator-insurance");
+  _pmiInput = document.querySelector(".calculator-pmi");
 
   toggleCalculator() {
     this._calcMonthly.classList.toggle("hidden");
@@ -34,11 +33,16 @@ class MortgageCalcInputView extends View {
     this._insuranceInput.classList.toggle("hidden");
   }
 
+  togglePMI() {
+    this._pmiInput.classList.toggle("hidden");
+  }
+
   addHandlerCalculatorUpdate = function (handler) {
     this._mnthLoanAmtInput.addEventListener("keyup", handler);
     this._amtPaymentInput.addEventListener("keyup", handler);
     this._propertyTaxInput.addEventListener("keyup", handler);
     this._insuranceInput.addEventListener("keyup", handler);
+    this._pmiInput.addEventListener("keyup", handler);
 
     this._loanIntRateInput.addEventListener("keyup", handler);
     this._loanTermInput.addEventListener("change", handler);

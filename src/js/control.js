@@ -42,19 +42,13 @@ controlToggles = function (e) {
   model.state.controls[toggle] = !model.state.controls[toggle];
 
   // show/hide the appropriate field
-  switch (toggle) {
-    case config.TOGGLE_CALC_TYPE:
-      mortgageCalcInputView.toggleCalculator();
-      break;
-
-    case config.TOGGLE_PROPERTY_TAX:
-      mortgageCalcInputView.togglePropertyTax();
-      break;
-
-    case config.TOGGLE_INSURANCE:
-      mortgageCalcInputView.toggleInsurance();
-      break;
-  }
+  if (toggle === config.TOGGLE_CALC_TYPE)
+    mortgageCalcInputView.toggleCalculator();
+  if (toggle === config.TOGGLE_PROPERTY_TAX)
+    mortgageCalcInputView.togglePropertyTax();
+  if (toggle === config.TOGGLE_INSURANCE)
+    mortgageCalcInputView.toggleInsurance();
+  if (toggle === config.TOGGLE_PMI) mortgageCalcInputView.togglePMI();
 
   // guard if calculator cannot calculate
   if (!model.isCalculatorValid()) {
@@ -71,6 +65,7 @@ const init = function () {
   model.state.controls[config.TOGGLE_CALC_TYPE] = false;
   model.state.controls[config.TOGGLE_PROPERTY_TAX] = false;
   model.state.controls[config.TOGGLE_INSURANCE] = false;
+  model.state.controls[config.TOGGLE_PMI] = false;
   model.state.user.locale = navigator.language;
 
   mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);

@@ -43,73 +43,70 @@
         <div class="col-7 col-input">
           <main class="content">
             <!-- Unified Calculator-->
-            <div class="calculator-input">
-              <h2>Calculator Input</h2>
+            <div class="container calculator-input">
               <form class="basic-calculator-input">
                 <div class="row">
-                  <div class="col calculator-payment">
-                    <label for="mnth_loan_amount">Loan Amount</label>
-                    <div class="input-group mb-3 input-group-lg">
-                      <span class="input-group-text">$</span>
-                      <input
-                        id="mnth_loan_amount"
-                        type="number"
-                        class="form-control calculator-field"
-                        aria-label="Amount (to the nearest dollar)"
-                        value="240000"
-                      />
-                      <span class="input-group-text">.00</span>
-                    </div>
-                  </div>
-                  <div class="col calculator-amount hidden">
-                    <label for="mnth_loan_amount">Monthly Payment</label>
-                    <div class="input-group mb-3 input-group-lg">
-                      <span class="input-group-text">$</span>
-                      <input
-                        id="amt_payment"
-                        type="number"
-                        class="form-control calculator-field"
-                        aria-label="Aount (to the nearest dollar)"
-                      />
-                      <span class="input-group-text">.00</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col input-group-lg">
-                    <label for="interest_rate">Interest Rate</label>
-                    <div class="input-group mb-3 input-group-lg">
-                      <input
-                        id="interest_rate"
-                        type="number"
-                        class="form-control calculator-field interest_rate"
-                        aria-label="Int Rate"
-                        step="0.01"
-                        value="7.749"
-                      />
-                      <span class="input-group-text">%</span>
-                    </div>
-                  </div>
+                  <h2>Calculator Input</h2>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <label for="loan_term">Loan Term</label>
-                    <select
-                      id="loan_term"
-                      class="calculator-field form-select form-select-lg"
-                    >
-                      <option value="" disabled selected>
-                        Choose your desired loan term
-                      </option>
-                      <option value="30,fixed">30-year Fixed</option>
-                      <option value="20,fixed">20-year Fixed</option>
-                      <option value="15,fixed">15-year Fixed</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row calculator-property-tax hidden">
-                  <div class="col">
-                    <div class="col">
+                    <div class="calculator-payment">
+                      <label for="mnth_loan_amount">Loan Amount</label>
+                      <div class="input-group mb-3 input-group-lg">
+                        <span class="input-group-text">$</span>
+                        <input
+                          id="mnth_loan_amount"
+                          type="number"
+                          class="form-control calculator-field"
+                          aria-label="Amount (to the nearest dollar)"
+                          value="250000"
+                        />
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+                    <div class="calculator-amount hidden">
+                      <label for="mnth_loan_amount">Monthly Payment</label>
+                      <div class="input-group mb-3 input-group-lg">
+                        <span class="input-group-text">$</span>
+                        <input
+                          id="amt_payment"
+                          type="number"
+                          class="form-control calculator-field"
+                          aria-label="Aount (to the nearest dollar)"
+                        />
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+
+                    <div class="calculator-interest">
+                      <label for="interest_rate">Interest Rate</label>
+                      <div class="input-group mb-3 input-group-lg">
+                        <input
+                          id="interest_rate"
+                          type="number"
+                          class="form-control calculator-field interest_rate"
+                          aria-label="Int Rate"
+                          step="0.01"
+                          value="7.749"
+                        />
+                        <span class="input-group-text">%</span>
+                      </div>
+                    </div>
+                    <div class="calculator-loan-term mb-3">
+                      <label for="loan_term">Loan Term</label>
+                      <select
+                        id="loan_term"
+                        class="calculator-field form-select form-select-lg"
+                      >
+                        <option value="" disabled selected>
+                          Choose your desired loan term
+                        </option>
+                        <option value="30,fixed">30-year Fixed</option>
+                        <option value="20,fixed">20-year Fixed</option>
+                        <option value="15,fixed">15-year Fixed</option>
+                      </select>
+                    </div>
+                    <div class="calculator-property-tax hidden">
                       <label for="annual_property_tax"
                         >Estimated Annual Property Tax</label
                       >
@@ -124,11 +121,7 @@
                         <span class="input-group-text">.00</span>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="row calculator-insurance hidden">
-                  <div class="col">
-                    <div class="col">
+                    <div class="calculator-insurance hidden">
                       <label for="annual_insurance"
                         >Estimated Annual Property Insurance</label
                       >
@@ -136,6 +129,21 @@
                         <span class="input-group-text">$</span>
                         <input
                           id="annual_insurance"
+                          type="number"
+                          class="form-control calculator-field"
+                          aria-label="Amount (to the nearest dollar)"
+                        />
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="ms-3 calculator-pmi hidden">
+                      <label for="pmi">Estimated Down Payment</label>
+                      <div class="input-group mb-3 input-group-lg">
+                        <span class="input-group-text">$</span>
+                        <input
+                          id="pmi"
                           type="number"
                           class="form-control calculator-field"
                           aria-label="Amount (to the nearest dollar)"

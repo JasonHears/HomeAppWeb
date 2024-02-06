@@ -113,10 +113,6 @@ body {
   display: flex;
   flex-direction: row;
 }
-.content > .calculator-monthly {
-  flex: 1;
-  min-height: 20vh;
-}
 
 header,
 footer,
@@ -174,6 +170,7 @@ body.body-background {
   order: 3;
   flex-grow: 4;
   flex-basis: auto;
+  margin: 0 1rem;
 }
 
 .row > .col-display {

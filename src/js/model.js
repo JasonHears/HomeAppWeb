@@ -1,27 +1,16 @@
-import {
-  DEFAULT_CALC_TYPE,
-  CALC_TYPE_MONTHLY,
-  CALC_TYPE_AMOUNT,
-} from "./config.js";
+import * as config from "./config.js";
 
 export const state = {
   calculator: {
-    monthly: {
-      loanAmount: 250000,
-      loanInterest: 6.7,
-      termYears: 30,
-      termType: "fixed",
-    },
-    amount: {
-      payment: 1650,
-      loanInterest: 6.7,
-      termYears: 30,
-      termType: "fixed",
-    },
+    mnthLoanAmount: 0,
+    amtPayment: 0,
+    loanInterest: 0,
+    termYears: 0,
+    termType: "",
+    propertyTax: 0,
+    insurance: 0,
   },
-  controls: {
-    calculationType: DEFAULT_CALC_TYPE,
-  },
+  controls: {},
   results: {
     monthly: 0,
     amount: 0,
@@ -32,61 +21,104 @@ export const state = {
   },
 };
 
-//result: 1676
+/**
+ *
+ * @returns {Number} Result of calculation for monthly payment
+ */
 const _calculateMonthly = function () {
-  const loanAmt = state.calculator.monthly.loanAmount;
-  const interest = state.calculator.monthly.loanInterest / 100 / 12;
-  const numPayments = state.calculator.monthly.termYears * 12;
+  const calc = state.calculator;
+  const interest = calc.loanInterest / 100 / 12;
+  const numPayments = calc.termYears * 12;
+
   const discountFactor =
     ((1 + interest) ** numPayments - 1) /
     (interest * (1 + interest) ** numPayments);
 
-  const result = Math.round((loanAmt / discountFactor) * 100) / 100;
+  let result = Math.round((calc.mnthLoanAmount / discountFactor) * 100) / 100;
 
-  console.log("Monthly Result: ", result);
+  // Property Tax Inclusion
+  if (state.controls?.[config.TOGGLE_PROPERTY_TAX] && calc.propertyTax !== 0) {
+    result += calc.propertyTax / 12;
+  }
+
+  // Property Insurance Inclusion
+  if (state.controls?.[config.TOGGLE_INSURANCE] && calc.insurance !== 0) {
+    result += calc.insurance / 12;
+  }
+
+  console.log("result: ", result);
   return result;
 };
 
+/**
+ *
+ * @returns {Number} Result of calculation for loan amount
+ */
 const _calculateAmount = function () {
-  const payment = state.calculator.amount.payment;
-  const interest = state.calculator.amount.loanInterest / 100 / 12;
-  const numPayments = state.calculator.amount.termYears * 12;
+  const calc = state.calculator;
+  const interest = calc.loanInterest / 100 / 12;
+  const numPayments = calc.termYears * 12;
+
   const discountFactor =
     ((1 + interest) ** numPayments - 1) /
     (interest * (1 + interest) ** numPayments);
 
-  const result = Math.round(payment * discountFactor * 100) / 100;
+  let adjustedPayment = calc.amtPayment;
 
-  console.log("Amount Result: ", result);
+  // Property Tax Inclusion
+  if (state.controls?.[config.TOGGLE_PROPERTY_TAX] && calc.propertyTax !== 0) {
+    adjustedPayment -= calc.propertyTax / 12;
+  }
+
+  // Property Insurance Inclusion
+  if (state.controls?.[config.TOGGLE_INSURANCE] && calc.insurance !== 0) {
+    adjustedPayment -= calc.insurance / 12;
+  }
+
+  let result = Math.round(adjustedPayment * discountFactor * 100) / 100;
+
+  console.log("result: ", result);
   return result;
 };
 
-const createMonthlyCalculator = function (data) {
-  return {
-    loanAmount: +data.mnth_loan_amount,
-    loanInterest: +data.mnth_interest_rate,
-    termYears: `${+data.mnth_loan_term.split(",")[0]}`,
-    termType: `${data.mnth_loan_term.split(",")[1]}`,
-  };
+export const updateCalculator = function (data) {
+  try {
+    this.state.calculator = {
+      mnthLoanAmount: +data.mnth_loan_amount,
+      amtPayment: +data.amt_payment,
+      loanInterest: +data.interest_rate,
+      termYears: +`${+data.loan_term.split(",")[0]}`,
+      termType: `${data.loan_term.split(",")[1]}`,
+      propertyTax: +data.annual_property_tax,
+      insurance: +data.annual_insurance,
+    };
+  } catch (error) {
+    throw new Error("Issue updating calculator from input data.");
+  }
 };
 
-const createAmountCalculator = function (data) {
-  return {
-    payment: +data.amt_payment,
-    loanInterest: +data.amt_interest_rate,
-    termYears: `${+data.amt_loan_term.split(",")[0]}`,
-    termType: `${data.amt_loan_term.split(",")[1]}`,
-  };
+export const calculateMortgage = function () {
+  this.state.results.monthly = _calculateMonthly();
+  this.state.results.amount = _calculateAmount();
 };
 
-export const calculateMortgage = async function (data) {
-  if (this.state.controls.calculationType == CALC_TYPE_MONTHLY) {
-    this.state.calculator.monthly = createMonthlyCalculator(data);
-    this.state.results.monthly = _calculateMonthly();
-  }
+/**
+ * Returns whether or not calculator has valid inputs to run against
+ * @returns {boolean} true if calculator is valid, false if not
+ */
+export const isCalculatorValid = function () {
+  const calc = this.state.calculator;
 
-  if (this.state.controls.calculationType == CALC_TYPE_AMOUNT) {
-    this.state.calculator.amount = createAmountCalculator(data);
-    this.state.results.amount = _calculateAmount();
-  }
+  return (
+    // validate interest and termYears are not 0
+    calc.loanInterest !== 0 &&
+    calc.termYears !== 0 &&
+    // validate loan amount or payment is not 0 based on calculation type
+    ((this.state.controls[config.TOGGLE_CALC_TYPE] ===
+      config.CALC_TYPE_MONTHLY &&
+      calc.mnthLoanAmount !== 0) ||
+      (this.state.controls[config.TOGGLE_CALC_TYPE] ===
+        config.CALC_TYPE_AMOUNT &&
+        calc.amtPayment !== 0))
+  );
 };

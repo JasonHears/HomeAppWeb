@@ -1,20 +1,35 @@
 import View from "./View.js";
 import * as helper from "../helper.js";
-import { CALC_TYPE_MONTHLY, CALC_TYPE_AMOUNT } from "../config.js";
+import * as config from "../config.js";
 
 class mortgageCalcDisplayView extends View {
   _parentElement = document.querySelector(".calculator-display");
   _message = "Enter your loan information.";
-  _error = "Invalid loan information.";
+  _errorMessage = "Invalid loan information.";
+
+  renderError(message = this._message) {
+    const markup = `
+      <div class="calculator-display__amount">--</div>
+      <div class="calculator-display__label calculator-mode">
+        ${message}
+      </div>
+    `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
 
   _generateMarkup() {
     let display, label;
-    if (this._data.controls.calculationType == CALC_TYPE_MONTHLY) {
+    if (
+      this._data.controls[config.TOGGLE_CALC_TYPE] == config.CALC_TYPE_MONTHLY
+    ) {
       display = this._data.results.monthly;
       label = "Estimated Monthly Payment";
     }
 
-    if (this._data.controls.calculationType == CALC_TYPE_AMOUNT) {
+    if (
+      this._data.controls[config.TOGGLE_CALC_TYPE] == config.CALC_TYPE_AMOUNT
+    ) {
       display = this._data.results.amount;
       label = "Estimated Loan Amount";
     }

@@ -10,8 +10,8 @@ import * as bootstrap from "bootstrap";
 import "core-js/stable"; // transpiling backwards support
 import "regenerator-runtime/runtime"; // polyfill async await
 
-controlLoanCalculation = async function (calcInput) {
-  // process input values
+controlLoanCalculation = function (calcInput) {
+  // process input values into state.calculator
   const objData = {};
   Array.from(
     calcInput.target
@@ -25,41 +25,58 @@ controlLoanCalculation = async function (calcInput) {
       objData[input.id] = input.value;
     });
 
-  // guard if any values are blank
-  if (Object.values(objData).includes("")) return;
+  model.updateCalculator(objData);
 
-  // run calculator
-  await model.calculateMortgage(objData);
+  // guard if calculator cannot calculate
+  if (!model.isCalculatorValid()) {
+    mortgageCalcDisplayView.render(); // renders the default display
+    return;
+  }
 
-  // render results
-  await mortgageCalcDisplayView.render(model.state);
+  model.calculateMortgage();
+  mortgageCalcDisplayView.render(model.state);
 };
 
-controlCalculatorToggle = async function (toggle) {
-  if ((toggle = config.TOGGLE_CALC_TYPE)) {
-    // toggle the calculation Type
-    model.state.controls.calculationType =
-      model.state.controls.calculationType === config.CALC_TYPE_MONTHLY
-        ? config.CALC_TYPE_AMOUNT
-        : config.CALC_TYPE_MONTHLY;
+controlToggles = function (e) {
+  const toggle = e.target.name;
+  model.state.controls[toggle] = !model.state.controls[toggle];
 
-    // toggle calculator input view
-    mortgageCalcInputView.toggleCalculator();
+  // show/hide the appropriate field
+  switch (toggle) {
+    case config.TOGGLE_CALC_TYPE:
+      mortgageCalcInputView.toggleCalculator();
+      break;
 
-    // trigger calculation?
+    case config.TOGGLE_PROPERTY_TAX:
+      mortgageCalcInputView.togglePropertyTax();
+      break;
 
-    // update display
-    mortgageCalcDisplayView.render(model.state);
+    case config.TOGGLE_INSURANCE:
+      mortgageCalcInputView.toggleInsurance();
+      break;
   }
+
+  // guard if calculator cannot calculate
+  if (!model.isCalculatorValid()) {
+    mortgageCalcDisplayView.render();
+    return;
+  }
+
+  model.calculateMortgage();
+  mortgageCalcDisplayView.render(model.state);
 };
 
 const init = function () {
-  mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);
-  mortgageCalcControlsView.addHandlerCalculationTypeSwitch(
-    controlCalculatorToggle
-  );
-
+  // set up state object data
+  model.state.controls[config.TOGGLE_CALC_TYPE] = false;
+  model.state.controls[config.TOGGLE_PROPERTY_TAX] = false;
+  model.state.controls[config.TOGGLE_INSURANCE] = false;
   model.state.user.locale = navigator.language;
+
+  mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);
+
+  mortgageCalcControlsView.render([1, 2]); // render control switches HACK: [1,2]
+  mortgageCalcControlsView.addHandlerRadioSwitches(controlToggles);
 };
 
 init();

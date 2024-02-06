@@ -1,6 +1,10 @@
 export default class View {
   _data;
 
+  /**
+   * Renders the string to the _parentElement
+   * @param {String} message to render
+   */
   renderError(message = this._errorMessage) {
     const markup = `
     <div class="error">
@@ -11,16 +15,9 @@ export default class View {
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
-  renderMessage(message = this._message) {
-    const markup = `
-    <div class="message">
-      ${message}
-    </div>
-    `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
-
+  /**
+   * clears the contents of the _parentElement
+   */
   _clear() {
     this._parentElement.innerHTML = "";
   }

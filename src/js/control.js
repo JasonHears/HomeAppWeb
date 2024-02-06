@@ -33,10 +33,7 @@ controlLoanCalculation = function (calcInput) {
     return;
   }
 
-  // run calculator
   model.calculateMortgage();
-
-  // render results
   mortgageCalcDisplayView.render(model.state);
 };
 
@@ -44,16 +41,16 @@ controlToggles = function (e) {
   const toggle = e.target.name;
   model.state.controls[toggle] = !model.state.controls[toggle];
 
+  // show/hide the appropriate field
   switch (toggle) {
     case config.TOGGLE_CALC_TYPE:
-      // toggle calculator input view
       mortgageCalcInputView.toggleCalculator();
       break;
 
     case config.TOGGLE_PROPERTY_TAX:
-      // show/hide field
       mortgageCalcInputView.togglePropertyTax();
       break;
+
     case config.TOGGLE_INSURANCE:
       mortgageCalcInputView.toggleInsurance();
       break;
@@ -64,9 +61,8 @@ controlToggles = function (e) {
     mortgageCalcDisplayView.render();
     return;
   }
-  // calculate
+
   model.calculateMortgage();
-  // update display
   mortgageCalcDisplayView.render(model.state);
 };
 
@@ -79,8 +75,8 @@ const init = function () {
 
   mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);
 
-  mortgageCalcControlsView.render([1, 2]);
-  mortgageCalcControlsView.addHandlerCalculationTypeSwitch(controlToggles);
+  mortgageCalcControlsView.render([1, 2]); // render control switches HACK: [1,2]
+  mortgageCalcControlsView.addHandlerRadioSwitches(controlToggles);
 };
 
 init();

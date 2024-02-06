@@ -11,6 +11,15 @@ class mortgageCalcControlsView extends View {
   _message = "";
   _error = "";
 
+  /**
+   * Generates markup for a switch control
+   * @param {String} title primary switch label
+   * @param {String} name switch name within HTML
+   * @param {String} label1 label of the primary position
+   * @param {String} label2 label of the secondary position
+   * @param {Array} options [checked specifies which switch to default to one]
+   * @returns
+   */
   _generateControlMarkup(
     title,
     name,
@@ -55,6 +64,10 @@ class mortgageCalcControlsView extends View {
     `;
   }
 
+  /**
+   * Generates the HTML markup for this _parentElement
+   * @returns {String}
+   */
   _generateMarkup() {
     return (
       this._generateControlMarkup(
@@ -78,10 +91,11 @@ class mortgageCalcControlsView extends View {
     );
   }
 
-  addHandlerCalculationTypeSwitch(handler) {
-    // handle calculation-type switch
-    // passing in TOGGLE_CALC_TYPE to support additional toggles in the future
-
+  /**
+   * Adds change handler to radio "switches"
+   * @param {*} handler callback handler function
+   */
+  addHandlerRadioSwitches(handler) {
     document.querySelectorAll("input[type='radio']").forEach((elm) => {
       elm.addEventListener("change", function (e) {
         handler(e);

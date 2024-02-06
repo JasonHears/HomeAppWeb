@@ -4,6 +4,7 @@ import {
   TOGGLE_CALC_TYPE,
   TOGGLE_PROPERTY_TAX,
   TOGGLE_INSURANCE,
+  TOGGLE_PMI,
 } from "../config.js";
 
 class mortgageCalcControlsView extends View {
@@ -87,7 +88,8 @@ class mortgageCalcControlsView extends View {
         TOGGLE_INSURANCE,
         "No",
         "Yes"
-      )
+      ) +
+      this._generateControlMarkup("Include PMI", TOGGLE_PMI, "No", "Yes")
     );
   }
 

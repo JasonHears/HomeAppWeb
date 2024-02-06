@@ -1,4 +1,5 @@
 import * as config from "./config.js";
+import { roundMoney } from "./helper.js";
 
 export const state = {
   calculator: {
@@ -9,6 +10,7 @@ export const state = {
     termType: "",
     propertyTax: 0,
     insurance: 0,
+    downPayment: 0,
   },
   controls: {},
   results: {
@@ -22,7 +24,51 @@ export const state = {
 };
 
 /**
- *
+ * Calculates the monthly PMI payment cost based on loan amount and down payment
+ * @param {Number} loanAmt amount being financed via loan
+ * @param {Number} downPayment amount provided for down payment
+ * @returns
+ */
+const _calculateMonthlyPMI = function (loanAmt, downPayment) {
+  // loanAmt + downPayment = purchase price
+  const percentFunded = (downPayment / (loanAmt + downPayment)) * 100;
+
+  if (percentFunded >= config.PMI_QUALIFY_PCT) return 0;
+
+  // calculate 0-1 scale for determining how much PMI percentage rate will be
+  const pctPMI =
+    (config.PMI_QUALIFY_PCT - percentFunded) / config.PMI_QUALIFY_PCT;
+  // use above percentage to determine actual PMI percentage rate
+  const pmiRate = (config.PMI_MAXIMUM * pctPMI + config.PMI_MINIMUM) / 100;
+
+  // return monthly PMI cost
+  return (loanAmt * pmiRate) / 12;
+};
+
+/**
+ * Calculates the total PMI cost over the life of a loan
+ * @param {Number} loanAmt amount being financed via loan
+ * @param {Number} downPayment amount provided for down payment
+ * @param {Number} termYears number of years loan is financed for
+ * @returns
+ */
+const _calculateAmountPMI = function (loanAmt, downPayment, termYears) {
+  // 20% of loan is paid off after x months of loan (assumes straight-line)
+  // assuming PMI is removed after 20% ltv
+  const pmiTermMonths = termYears * 12 * 0.2; // 20% of total months of loan
+
+  // calculate the monthly PMI cost
+  const monthlyPMI = _calculateMonthlyPMI(loanAmt, downPayment);
+
+  // calculate the total PMI cost over the loan (assumes PMI removed after 20% ltv)
+  const totalPMICost = monthlyPMI * pmiTermMonths;
+
+  // return total PMI cost of loan
+  return totalPMICost;
+};
+
+/**
+ * Calculates the monthly payment based on loan amount
  * @returns {Number} Result of calculation for monthly payment
  */
 const _calculateMonthly = function () {
@@ -34,7 +80,7 @@ const _calculateMonthly = function () {
     ((1 + interest) ** numPayments - 1) /
     (interest * (1 + interest) ** numPayments);
 
-  let result = Math.round((calc.mnthLoanAmount / discountFactor) * 100) / 100;
+  let result = roundMoney(calc.mnthLoanAmount / discountFactor);
 
   // Property Tax Inclusion
   if (state.controls?.[config.TOGGLE_PROPERTY_TAX] && calc.propertyTax !== 0) {
@@ -46,12 +92,21 @@ const _calculateMonthly = function () {
     result += calc.insurance / 12;
   }
 
-  console.log("result: ", result);
+  // PMI Inclusion
+  if (state.controls?.[config.TOGGLE_PMI] && calc.downPayment !== 0) {
+    const monthlyPMI = _calculateMonthlyPMI(
+      calc.mnthLoanAmount,
+      calc.downPayment
+    );
+    result += monthlyPMI;
+  }
+
+  console.log("result mnth: ", result);
   return result;
 };
 
 /**
- *
+ * Calculates the maximum loan amount based on monthly payment
  * @returns {Number} Result of calculation for loan amount
  */
 const _calculateAmount = function () {
@@ -75,9 +130,19 @@ const _calculateAmount = function () {
     adjustedPayment -= calc.insurance / 12;
   }
 
-  let result = Math.round(adjustedPayment * discountFactor * 100) / 100;
+  let result = roundMoney(adjustedPayment * discountFactor); // current loan amount
 
-  console.log("result: ", result);
+  // PMI Inclusion
+  if (state.controls?.[config.TOGGLE_PMI] && calc.downPayment !== 0) {
+    const totalPMICost = _calculateAmountPMI(
+      result,
+      calc.downPayment,
+      calc.termYears
+    );
+    result -= totalPMICost;
+  }
+
+  console.log("result amt: ", result);
   return result;
 };
 
@@ -91,6 +156,7 @@ export const updateCalculator = function (data) {
       termType: `${data.loan_term.split(",")[1]}`,
       propertyTax: +data.annual_property_tax,
       insurance: +data.annual_insurance,
+      downPayment: +data.pmi,
     };
   } catch (error) {
     throw new Error("Issue updating calculator from input data.");

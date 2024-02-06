@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import mortgageCalcInputView from "./views/mortgageCalcInputView.js";
 import mortgageCalcDisplayView from "./views/mortgageCalcDisplayView.js";
 import mortgageCalcControlsView from "./views/mortgageCalcControlsView.js";
+
 import * as config from "./config.js";
 
 // Import all of Bootstrap's JS
@@ -54,6 +55,9 @@ controlToggles = function (e) {
     case config.TOGGLE_INSURANCE:
       mortgageCalcInputView.toggleInsurance();
       break;
+    case config.TOGGLE_PMI:
+      mortgageCalcInputView.togglePMI();
+      break;
   }
 
   // guard if calculator cannot calculate
@@ -71,6 +75,7 @@ const init = function () {
   model.state.controls[config.TOGGLE_CALC_TYPE] = false;
   model.state.controls[config.TOGGLE_PROPERTY_TAX] = false;
   model.state.controls[config.TOGGLE_INSURANCE] = false;
+  model.state.controls[config.TOGGLE_PMI] = false;
   model.state.user.locale = navigator.language;
 
   mortgageCalcInputView.addHandlerCalculatorUpdate(controlLoanCalculation);

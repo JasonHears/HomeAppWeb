@@ -20,29 +20,26 @@ class mortgageCalcDisplayView extends View {
 
   _generateMarkup() {
     let display, label;
-    if (
-      this._data.controls[config.TOGGLE_CALC_TYPE] == config.CALC_TYPE_MONTHLY
-    ) {
-      display = this._data.results.monthly;
-      label = "Estimated Monthly Payment";
-    }
-
-    if (
-      this._data.controls[config.TOGGLE_CALC_TYPE] == config.CALC_TYPE_AMOUNT
-    ) {
-      display = this._data.results.amount;
-      label = "Estimated Loan Amount";
+    switch (this._data.controls[config.TOGGLE_CALC_TYPE]) {
+      case config.CALC_TYPE_MONTHLY:
+        display = this._data.results.monthly;
+        label = "Estimated Monthly Payment";
+        break;
+      case config.CALC_TYPE_AMOUNT:
+        display = this._data.results.amount;
+        label = "Estimated Loan Amount";
+        break;
     }
 
     return `
-    <div class="calculator-display__amount">${helper.formatCurrency(
-      display,
-      "en-US",
-      "USD"
-    )}</div>
-    <div class="calculator-display__label calculator-mode">
-      ${label}
-    </div>
+      <div class="calculator-display__amount">${helper.formatCurrency(
+        display,
+        "en-US",
+        "USD"
+      )}</div>
+      <div class="calculator-display__label calculator-mode">
+        ${label}
+      </div>
     `;
   }
 } // class

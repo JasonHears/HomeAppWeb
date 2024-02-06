@@ -2,7 +2,6 @@ import * as model from "./model.js";
 import mortgageCalcInputView from "./views/mortgageCalcInputView.js";
 import mortgageCalcDisplayView from "./views/mortgageCalcDisplayView.js";
 import mortgageCalcControlsView from "./views/mortgageCalcControlsView.js";
-
 import * as config from "./config.js";
 
 // Import all of Bootstrap's JS
@@ -43,22 +42,13 @@ controlToggles = function (e) {
   model.state.controls[toggle] = !model.state.controls[toggle];
 
   // show/hide the appropriate field
-  switch (toggle) {
-    case config.TOGGLE_CALC_TYPE:
-      mortgageCalcInputView.toggleCalculator();
-      break;
-
-    case config.TOGGLE_PROPERTY_TAX:
-      mortgageCalcInputView.togglePropertyTax();
-      break;
-
-    case config.TOGGLE_INSURANCE:
-      mortgageCalcInputView.toggleInsurance();
-      break;
-    case config.TOGGLE_PMI:
-      mortgageCalcInputView.togglePMI();
-      break;
-  }
+  if (toggle === config.TOGGLE_CALC_TYPE)
+    mortgageCalcInputView.toggleCalculator();
+  if (toggle === config.TOGGLE_PROPERTY_TAX)
+    mortgageCalcInputView.togglePropertyTax();
+  if (toggle === config.TOGGLE_INSURANCE)
+    mortgageCalcInputView.toggleInsurance();
+  if (toggle === config.TOGGLE_PMI) mortgageCalcInputView.togglePMI();
 
   // guard if calculator cannot calculate
   if (!model.isCalculatorValid()) {

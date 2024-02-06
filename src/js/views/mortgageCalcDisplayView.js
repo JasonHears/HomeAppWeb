@@ -5,7 +5,18 @@ import * as config from "../config.js";
 class mortgageCalcDisplayView extends View {
   _parentElement = document.querySelector(".calculator-display");
   _message = "Enter your loan information.";
-  _error = "Invalid loan information.";
+  _errorMessage = "Invalid loan information.";
+
+  renderError(message = this._message) {
+    const markup = `
+      <div class="calculator-display__amount">--</div>
+      <div class="calculator-display__label calculator-mode">
+        ${message}
+      </div>
+    `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
 
   _generateMarkup() {
     let display, label;

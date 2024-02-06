@@ -45,9 +45,9 @@
             <!-- Unified Calculator-->
             <div class="calculator-input">
               <h2>Calculator Input</h2>
-              <form>
+              <form class="basic-calculator-input">
                 <div class="row">
-                  <div class="col input-field calculator-monthly">
+                  <div class="col calculator-payment">
                     <label for="mnth_loan_amount">Loan Amount</label>
                     <div class="input-group mb-3 input-group-lg">
                       <span class="input-group-text">$</span>
@@ -56,11 +56,12 @@
                         type="number"
                         class="form-control calculator-field"
                         aria-label="Amount (to the nearest dollar)"
+                        value="240000"
                       />
                       <span class="input-group-text">.00</span>
                     </div>
                   </div>
-                  <div class="col input-field calculator-amount hidden">
+                  <div class="col calculator-amount hidden">
                     <label for="mnth_loan_amount">Monthly Payment</label>
                     <div class="input-group mb-3 input-group-lg">
                       <span class="input-group-text">$</span>
@@ -68,14 +69,14 @@
                         id="amt_payment"
                         type="number"
                         class="form-control calculator-field"
-                        aria-label="Int Rate"
+                        aria-label="Aount (to the nearest dollar)"
                       />
                       <span class="input-group-text">.00</span>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col input-group-lg input-field">
+                  <div class="col input-group-lg">
                     <label for="interest_rate">Interest Rate</label>
                     <div class="input-group mb-3 input-group-lg">
                       <input
@@ -84,13 +85,14 @@
                         class="form-control calculator-field interest_rate"
                         aria-label="Int Rate"
                         step="0.01"
+                        value="7.749"
                       />
                       <span class="input-group-text">%</span>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col input-field">
+                  <div class="col">
                     <label for="loan_term">Loan Term</label>
                     <select
                       id="loan_term"
@@ -105,8 +107,43 @@
                     </select>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col"></div>
+                <div class="row calculator-property-tax hidden">
+                  <div class="col">
+                    <div class="col">
+                      <label for="annual_property_tax"
+                        >Estimated Annual Property Tax</label
+                      >
+                      <div class="input-group mb-3 input-group-lg">
+                        <span class="input-group-text">$</span>
+                        <input
+                          id="annual_property_tax"
+                          type="number"
+                          class="form-control calculator-field"
+                          aria-label="Amount (to the nearest dollar)"
+                        />
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row calculator-insurance hidden">
+                  <div class="col">
+                    <div class="col">
+                      <label for="annual_insurance"
+                        >Estimated Annual Property Insurance</label
+                      >
+                      <div class="input-group mb-3 input-group-lg">
+                        <span class="input-group-text">$</span>
+                        <input
+                          id="annual_insurance"
+                          type="number"
+                          class="form-control calculator-field"
+                          aria-label="Amount (to the nearest dollar)"
+                        />
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
@@ -116,7 +153,7 @@
           <div class="panel-box">
             <h2>Mortgage Calculator</h2>
             <div class="calculator-display">
-              <div class="calculator-display__amount"></div>
+              <div class="calculator-display__amount">--</div>
               <div class="calculator-display__label calculator-mode">
                 Enter your loan information.
               </div>

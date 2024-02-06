@@ -1,6 +1,10 @@
 import View from "./View.js";
 
-import { TOGGLE_CALC_TYPE, TOGGLE_PROPERTY_TAX } from "../config.js";
+import {
+  TOGGLE_CALC_TYPE,
+  TOGGLE_PROPERTY_TAX,
+  TOGGLE_INSURANCE,
+} from "../config.js";
 
 class mortgageCalcControlsView extends View {
   _parentElement = document.querySelector(".calculator-controls");
@@ -62,6 +66,12 @@ class mortgageCalcControlsView extends View {
       this._generateControlMarkup(
         "Include Annual Property Tax",
         TOGGLE_PROPERTY_TAX,
+        "No",
+        "Yes"
+      ) +
+      this._generateControlMarkup(
+        "Include Annual Insurance",
+        TOGGLE_INSURANCE,
         "No",
         "Yes"
       )

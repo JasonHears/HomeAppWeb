@@ -31,7 +31,7 @@ export default class View {
    * @param {boolean} [render=true] returns markup string if false
    * @returns {undefined | string} A markup string is returned if render=false
    */
-  render = async function (data, render = true) {
+  render = function (data, render = true) {
     if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError();
 
